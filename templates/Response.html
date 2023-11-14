@@ -1,0 +1,72 @@
+{% extends "master.html" %}
+{% load static %}
+{% block additionalStyles %}
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+<form method="get" action="{% url 'SimpleSurveyApp:search-list' %}">
+    <input type="text" name="search" id="myInput"  placeholder="Search for email and press the search button below" title="Type in email">
+    <button type="submit" style="margin-left: 12px"  >Search</button>
+</form>
+
+
+<div style="overflow-x:auto;">
+    <table id="myTable">
+        <tr class="header">
+            <th style="width:15%;">Full Name</th>
+            <th style="width:15%;">Email Address</th>
+            <th style="width:15%;">Description</th>
+            <th style="width:10%;">Gender</th>
+            <th style="width:15%;">Programming Stack</th>
+            <th style="width:15%;">Data Responded</th>
+            <th style="width:15%;">Certificates</th>
+        </tr>
+        {% if search_query %}
+            {% for response in responses %}
+                    <tr>
+                        <td>{{ response.full_name }}</td>
+                        <td>{{ response.email_address }}</td>
+                        <td>{{ response.description }}</td>
+                        <td>{{ response.gender }}</td>
+                        <td>{{ response.programming_stack }}</td>
+                        <td>{{ response.date_responded }}</td>
+                        <td>{{ response.my_certs }}</td>
+                    </tr>
+
+            {% endfor %}
+        {% else %}
+            {% for response in responses %}
+                <tr>
+                    <td>{{ response.full_name }}</td>
+                    <td>{{ response.email_address }}</td>
+                    <td>{{ response.description }}</td>
+                    <td>{{ response.gender }}</td>
+                    <td>{{ response.programming_stack }}</td>
+                    <td>{{ response.date_responded }}</td>
+                    <td>{{ response.my_certs }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </table>
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if responses.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ responses.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ responses.number }} of {{ responses.paginator.num_pages }}.
+        </span>
+
+        {% if responses.has_next %}
+            <a href="?page={{ responses.next_page_number }}">next</a>
+            <a href="?page={{ responses.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

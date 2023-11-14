@@ -1,0 +1,65 @@
+{% extends "master.html" %}
+{% load static %}
+{% block additionalStyles %}
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock %}
+{% block content %}
+<form id="regForm" action="http://127.0.0.1:8000/api/questions/responses/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>Survey Form</h1>
+
+    <div id="questions-container">
+        {% for question in questions %}
+            <div class="tab">
+                <h3>Step {{question.id}} : {{ question.text }}</h3>
+                {% if question.type == "short_text" %}
+                    <input type="text" name="{{ question.name }}" placeholder="Enter your first and lastname" required>
+                {% elif question.type == "email" %}
+                    <input type="email" name="{{ question.name }}" required>
+                {% elif question.type == "long_text" %}
+                    <textarea name="{{ question.name }}" required></textarea>
+                {% elif question.type == "choice" %}
+                    {% for choice in question.choices%}
+                        <label><input type="radio"  name="{{ question.name }}" value="{{ choice.G_value }}" required/> {{ choice.G_value }}</label>
+                    {% endfor %}
+                {% elif question.type == "file" %}
+                    <input type="file" name="{{ question.name }}" multiple = "multiple" accept=".pdf"/>
+                {% elif question.type == "choices" %}
+                    <select name="{{ question.name }}" multiple="multiple" required>
+                        {% for choice in question.choices%}
+                            <option value="{{ choice.PS_value }}">{{ choice.PS_value }}</option>
+                        {% endfor %}
+                    </select>
+                {% endif %}
+
+                <p style="color:red">{{ question.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div style="overflow:auto;">
+        <div style="float:right;">
+            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+            <button type="submit" id="submitBtn" style="display:none;">Submit</button>
+        </div>
+    </div>
+
+
+    <div style="text-align:center;margin-top:40px;">
+        {% for question in questions %}
+            <span class="step"></span>
+        {% endfor %}
+    </div>
+</form>
+
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/form.js' %}"></script>
+{% endblock %}
+
+
+
+
+
