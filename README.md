@@ -9,7 +9,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 ## ERD Diagram.
-![Sky_Survey_DB_ERD drawio](https://github.com/Kimani-dev931/Simple-Survey-Application/assets/77829096/169d33a9-46dd-4aed-9442-d6c81c15dfdc)
+![Sky_Survey_DB_ERD drawio](https://github.com/Kimani-dev931/Simple-Survey-Application/assets/77829096/323fb0ce-1d1d-4fe2-95ee-8c23ea2bce5b)
 ## Postman Documentation
 The repository entails a postman collection of the various api requests.
 
