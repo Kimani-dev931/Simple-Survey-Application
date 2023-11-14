@@ -7,6 +7,7 @@ To run the application in your local machine ,you need to download the the sourc
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
+```
 
 ## Postman Documentation
 The repository entails a postman documentation of the various api requests.
