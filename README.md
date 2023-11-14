@@ -11,7 +11,7 @@ python manage.py runserver
 ## ERD Diagram.
 ![Sky_Survey_DB_ERD drawio](https://github.com/Kimani-dev931/Simple-Survey-Application/assets/77829096/169d33a9-46dd-4aed-9442-d6c81c15dfdc)
 ## Postman Documentation
-The repository entails a postman documentation of the various api requests.
+The repository entails a postman collection of the various api requests.
 
 ## Application screenshots.
 Below are screenshots of the application.
