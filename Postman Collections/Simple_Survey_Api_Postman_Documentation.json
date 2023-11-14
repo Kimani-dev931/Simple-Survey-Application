@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "afdb8093-3bd3-4046-91da-f33482ff598a",
+		"name": "Simple Survey Application Rest Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:8000/api/questions/",
+			"id": "fd0fd86a-7e29-40de-a28f-748741f4fefe",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": "http://127.0.0.1:8000/api/questions/"
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/questions/response/",
+			"id": "4a075f9b-9596-46fe-88d9-0c75f9e21786",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://127.0.0.1:8000/api/questions/response/"
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/questions/responses/certificates/14/",
+			"id": "415ed7a0-eb83-45de-8a39-c553ac84a571",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://127.0.0.1:8000/api/questions/responses/certificates/14/"
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/questions/responses/",
+			"id": "545564f3-8ec8-46cc-81c5-1790cce218b4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "full_name",
+							"value": "Peter Joseph",
+							"type": "text"
+						},
+						{
+							"key": "email_address",
+							"value": "josepp90@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "I am a junior software engineer with 2 yrs of experience",
+							"type": "text"
+						},
+						{
+							"key": "gender",
+							"value": "MALE",
+							"type": "text"
+						},
+						{
+							"key": "programming_stack",
+							"value": "VUE",
+							"type": "text"
+						},
+						{
+							"key": "my_certs",
+							"type": "file",
+							"src": "/C:/Users/kim/Desktop/HARRISON KIMANI-CV.pdf"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:8000/api/questions/responses/"
+			},
+			"response": []
+		}
+	]
+}
