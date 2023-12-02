@@ -3,12 +3,12 @@
 {% block additionalStyles %}
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/form.css' %}">
+
 {% endblock %}
 {% block content %}
 <form id="regForm" action="http://127.0.0.1:8000/api/questions/responses/" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <h1>Survey Form</h1>
-
     <div id="questions-container">
         {% for question in questions %}
             <div class="tab">

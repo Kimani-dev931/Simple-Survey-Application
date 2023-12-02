@@ -6,16 +6,28 @@ body {
   font-family: Arial, sans-serif;
 }
 
-#myInput {
 
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: calc(100% - 24px); /* Adjusted width to include left and right margins */
+#myInput {
+  width: 60%;
   font-size: 16px;
-  padding: 12px 20px 12px 40px;
+  padding: 12px;
   border: 1px solid #ddd;
   margin: 12px;
 }
+
+#searchButton {
+  background-color: #0082e6;
+  color: white;
+  border: 1px solid #4CAF50;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#searchButton:hover {
+  background-color: #1b9bff; /* Darker green color on hover */
+}
+
 
 #myTable {
   border-collapse: collapse;

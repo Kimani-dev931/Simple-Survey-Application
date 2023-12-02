@@ -1,13 +1,15 @@
 {% extends "master.html" %}
 {% load static %}
+
 {% block additionalStyles %}
 <link rel="stylesheet" href="{% static 'css/table.css' %}">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 {% endblock %}
 {% block content %}
+
 <form method="get" action="{% url 'SimpleSurveyApp:search-list' %}">
-    <input type="text" name="search" id="myInput"  placeholder="Search for email and press the search button below" title="Type in email">
-    <button type="submit" style="margin-left: 12px"  >Search</button>
+    <input type="text" name="search" id="myInput" value="{{search_query}}" placeholder="Search by Email Address" title="Type in email">
+    <button type="submit" id="searchButton" >Search</button>
 </form>
 
 

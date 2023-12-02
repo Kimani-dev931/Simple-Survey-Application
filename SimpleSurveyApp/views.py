@@ -54,12 +54,7 @@ class FormsubmitView(APIView):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             serializer.save()
-
-
-            messages.success(request, 'Form submitted successfully!')
-
-
-            return redirect('SimpleSurveyApp:home')
+            return redirect('SimpleSurveyApp:success')
 
         return Response(
             serializer.errors,
@@ -112,7 +107,6 @@ def certificate_view(request, pk):
         return Response({'detail': 'Certificate not found.'}, status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        # Assuming my_certs is a FileField
         if survey_response.my_certs:
             file_path = survey_response.my_certs.path
             with open(file_path, 'rb') as file:
@@ -131,11 +125,24 @@ class SearchListView(generics.ListAPIView):
 
     def get(self, request, *args, **kwargs):
         search_param = request.GET.get('search')
-        if search_param:
-            queryset = self.queryset.filter(email_address__icontains=search_param)
-        else:
-            queryset = self.get_queryset()
-        serializer = self.get_serializer(queryset, many=True)
 
+        if not search_param:
+            return redirect('SimpleSurveyApp:feedback')
+        queryset = self.queryset.filter(email_address__icontains=search_param)
+        if not queryset.exists():
+            return redirect('SimpleSurveyApp:error_page', search_param)
+
+        serializer = self.get_serializer(queryset, many=True)
         context = {'responses': serializer.data, 'search_query': search_param}
         return render(request, 'Response.html', context)
+
+
+def success_message(request):
+    return render(request, 'Success.html')
+
+
+def search_error(request, search_param):
+    context = {
+        'search_param': search_param,
+    }
+    return render(request, 'errorsearch.html', context)

@@ -13,5 +13,7 @@ urlpatterns = [
     path('api/questions/responses/', FormsubmitView.as_view(), name='submit-responses'),
     path('api/questions/responses/certificates/<int:pk>/',certificate_view, name='certificate-list'),
     path('search/', SearchListView.as_view(), name='search-list'),
+    path('successful/', views.success_message, name='success'),
+    path('error/<str:search_param>/', views.search_error, name='error_page'),
 
 ]
